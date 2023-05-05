@@ -61,11 +61,36 @@ const inputLoanAmount = document.querySelector(".form__input--loan-amount");
 const inputCloseUsername = document.querySelector(".form__input--user");
 const inputClosePin = document.querySelector(".form__input--pin");
 
+// *** START LESSON 147 CREATING DOM ELEMENTS ***//
+
+/*
+1- created a function called displayMovements and called it with account1.movements
+2-in the function we did a forEach on every mov and index of movements to create the html and check the movement type.
+3- added the html to the app container through insertAdjecentHTML.
+4- cleared the html of the app container.
+*/
+
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = "";
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? "deposit" : "withdrawal";
+    const html = `
+        <div class="movements__row">
+          <div class="movements__type movements__type--${type}"> ${
+      i + 1
+    } ${type} </div>
+          <div class="movements__value">${Math.abs(mov)}€</div>
+        </div>
+  `;
+    containerMovements.insertAdjacentHTML("afterbegin", html);
+  });
+};
+displayMovements(account1.movements);
+// *** END LESSON 147 ***//
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
-
-
 
 // const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
